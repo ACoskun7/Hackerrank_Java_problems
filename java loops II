@@ -1,0 +1,55 @@
+import java.util.*;
+import java.io.*;
+/*Output Format
+
+For each query, print the corresponding series on a new line. Each series must be printed in order as a single line of  space-separated integers.
+
+Sample Input
+
+2
+0 2 10
+5 3 5
+Sample Output
+
+2 6 14 30 62 126 254 510 1022 2046
+8 14 26 50 98*/
+class Solution{
+    public static void main(String []argh){
+        Scanner in = new Scanner(System.in);
+        int t=in.nextInt();
+        int []a=new int[t];
+        int []b=new int[t];
+        int []n=new int[t];
+         int [][] matrix=new int[t][30];
+         int deger;
+        for(int i=0;i<t;i++){
+            a[i] = in.nextInt();
+            b[i] = in.nextInt();
+            n[i] = in.nextInt();
+          
+           
+            for(int j=0;j<n[i];j++){
+                deger=(int)Math.pow(2,j);
+                if(j>0){
+                    matrix [i][j]=deger*b[i]+matrix[i][j-1];
+                }else{
+                    matrix [i][j]=a[i]+deger*b[i];
+                }
+                
+                
+            }
+        }
+      
+        //////////////////////////////////////////////////////////
+           for(int i=0;i<t;i++){
+           
+            for(int j=0;j<n[i];j++){
+                System.out.print(matrix[i][j]+" ");
+              
+            }
+            System.out.println();
+        }
+       
+        
+    }
+}
